@@ -1,57 +1,44 @@
-// Routine to get the API key. This is found on the root directory in apikey.json. Contact admin for dev key.
 const checkAPIKey = async () => {
-    let apikeyResponse = await fetch("../apikey.json").then(response => {return response.json()});
+    let apikeyResponse = await fetch("../apikey.json").then(response => response.json());
     return apikeyResponse;
 }
 
-const getAPIKey = async() => {
+const getAPIKey = async(manipulate) => {
     let data = await checkAPIKey();
-    console.log(data);
-}
-
-/*
-
-    QUERY will include the following:
-    RECENT_MOVIES,
-    MOVIES_CATEGORY,
-    RANDOM_MOVIE
-
-
-*/
-let checkSearch = async(query,callback) => {
-    if(query == "RECENT_MOVIES") {
-        let dataResponse = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=b79cdfddd3330372199952736e8d2641&sort_by=popularity.desc`)
-            .then(response => response.json())
-            .then(data => {return data});
-        return dataResponse;
-    } else if(query == "RANDOM_MOVIE"){
-        let dataResponse = await fetch(`https://api.themoviedb.org/3/movie/latest?api_key=b79cdfddd3330372199952736e8d2641`)
-            .then(response => response.json())
-            .then(data => {return data});
-        return dataResponse;
-    }
-}
-
-/**
- * 
- * @returns Promise
- * Because it is a promise, simply chain to get the data.
- * 
- */
-let getRecentMovies = async () => {
-    let data = await checkSearch("RECENT_MOVIES")
-        .then(response => console.log(response.results));
     return data;
 }
 
-// TODO: get movies from category
+let checkSearch = async(query,callback) => {
+    // Fetch the API key
+    let _apikey = await getAPIKey();
+    _apikey = _apikey["api-key"];
+    if(query == "RECENT_MOVIES"){
+        let moviedb_recent_response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${_apikey}`).then(response => response.json());
+        return moviedb_recent_response;
+    } else if(query == "RANDOM_MOVIE"){
+        let moviedb_recent_response = await fetch(`https://api.themoviedb.org/3/movie/latest?api_key=${_apikey}`).then(response => response.json());
+        return moviedb_recent_response;
+    } else if(query == "UPCOMING_MOVIES"){
+        let moviedb_recent_response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=${_apikey}`).then(response => response.json());
+        return moviedb_recent_response;
+    }
+}
 
-/**
- * 
- * @returns Promise
- * Because it is a promise, simply chain to get the data.
- * 
- */
+let checkCategory = async(query, callback) => {
+    
+}
+
+let getRecentMovies = async() => {
+    let data = await checkSearch("RECENT_MOVIES"); 
+    return data;
+}
+
+let getCategory = async () => {
+    
+
+
+}
+
 let getRandomMovie = async() => {
     let data = await checkSearch("RANDOM_MOVIE")
         .then(response => {return response});
