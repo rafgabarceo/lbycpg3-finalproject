@@ -30,7 +30,7 @@ let checkCategory = async(query, callback) => {
 
 let getRecentMovies = async() => {
     let data = await checkSearch("RECENT_MOVIES"); 
-    return data;
+    return data;    
 }
 
 let getCategory = async () => {
@@ -44,3 +44,15 @@ let getRandomMovie = async() => {
         .then(response => {return response});
     return data;
 }
+
+let manipulatePosters = async () => {
+    let data = await getRecentMovies(); // Return a promise. Because we attached await, will attach value.
+    let pos1 = document.getElementById("pos1");
+    console.log(data);
+    let imageData = data.results[0].poster_path;
+    let posterPath = `https://image.tmdb.org/t/p/w185${imageData}`;
+    pos1.src = posterPath;
+
+}
+
+manipulatePosters();
