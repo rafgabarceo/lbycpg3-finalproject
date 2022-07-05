@@ -11315,6 +11315,7 @@ a.navbar-brand{
     display: none !important;
   }
 }
+
 html {
   scroll-padding-top: 3.5rem;
 }
@@ -11330,9 +11331,11 @@ section {
 }
 
 .purpose {
-  font-size: 1.75rem;
+  font-size: 1.35rem;
   font-weight: 300;
   text-align: center;
+  padding-right: 10%;
+  padding-left: 10%;
 }
 
 .colMem {
