@@ -11328,3 +11328,61 @@ section {
   padding-top: 9rem;
   padding-bottom: 9rem;
 }
+
+.purpose {
+  font-size: 1.75rem;
+  font-weight: 300;
+  text-align: center;
+}
+
+.colMem {
+	flex: 1 0 0%;
+  margin: 25px;
+	width: 250px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.colMem img {
+  border-radius: 100px;
+	width: 200px;
+	height: 200px;
+	margin-bottom: 10px;
+  transition: 0.5s;
+}
+
+.colMem img:hover {
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+
+.colMem p {
+	text-align: center;
+	margin: 2px;
+}
+
+.colMem p:first-of-type {
+  font-weight: bolder;
+	margin-bottom: 5px;
+}
+
+.aboutMems {
+	padding-bottom:0px;
+}
+
+.aboutMems p {
+	font-size:20px;
+	color: var(--bs-dark);
+	line-height:22px;
+	font-family: var(--bs-font-sans-serif);
+	text-align: center;
+}
+
+.members {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
