@@ -82,14 +82,39 @@ let getRandomMovie = async() => {
     return data;
 }
 
-let manipulateMovieOfTheDay = async(query, callback) => {
+let manipulateMovieOfTheDay = async(callback) => {
+    let movieData = await getRandomMovie();
+    let movieTitle = document.getElementById("pick_day_title");
+    let description = document.getElementById("pick_day_desc");
+    let poster = document.getElementById("pick_day_poster");
+    let redirect = document.getElementById("pick_mdb_red");
+    if(movieData.poster_path == null){
+        poster.src = "https://hesolutions.com.pk/wp-content/uploads/2019/01/picture-not-available.jpg";
+    } else {
+        poster.src = `https://image.tmdb.org/t/p/w185${movieData.poster_path}`;
+    }
+
+    if(movieData.overview == null){
+        description.textContent = "There is no description provided.";
+    } else {
+        description.textContent = movieData.overview;
+    }
+
+    movieTitle.textContent = movieData.original_title;
+    redirect.href = `https://www.themoviedb.org/movie/${movieData.id}`;
+
+
+    console.log(movieData);
+
+    title.textContent = movieData.overview;
+}
+
+let manipulateLatestMovies = async(callback) => {
 
 }
 
-let manipulateLatestMovies = async(query, callback) => {
+let manipulateComingSoon = async(callback) => {
 
 }
 
-let manipulateComingSoon = async(query, callback) => {
-
-}
+manipulateMovieOfTheDay();
