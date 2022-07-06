@@ -4067,6 +4067,9 @@ li.a.nav-link{
   text-decoration: none;
   white-space: nowrap;
 }
+.movie-text{
+  font-family: title;
+}
 .navbar-nav {
   display: flex;
   flex-direction: column;
